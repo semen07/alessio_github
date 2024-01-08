@@ -1,215 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pagina con Dropdown Lists</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>home</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #postiInClasse {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #AI {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .footer{
+        color: gray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+  </style>
 </head>
 <body>
-    <h1>Disposizione posti in classe</h1>
-    <p>Inserisci i dati e ottieni la disposizione della classe con un solo click!</p>
-    <img src="images/Disposizione.png" alt="Disposizione Banchi">
-    <form method="post">
-        <fieldset>
-            <label for="vinciguerra_input">Vinciguerra Alessandro</label>
-            <select id="vinciguerra_input" name="vinciguerra">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="giuliani_input">Giuliani Antonio</label>
-            <select id="giuliani_input" name="giuliani">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="laterza_input">Laterza Daniele</label>
-            <select id="laterza_input" name="laterza">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="dalessio_input">D'alessio Davide</label>
-            <select id="dalessio_input" name="dalessio">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="giannoccaro_input">Giannoccaro Davide Giuseppe</label>
-            <select id="giannoccaro_input" name="giannoccaro">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="fabbri_input">Fabbri Dylan</label>
-            <select id="fabbri_input" name="fabbri">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="indiveri_input">Indiveri Emanuele</label>
-            <select id="indiveri_input" name="indiveri">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="marino_input">Marino Emanuele</label>
-            <select id="marino_input" name="marino">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="centomani_input">Centomani Giorgio</label>
-            <select id="centomani_input" name="centomani">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="giannuzzi_input">Giannuzzi Giovanni</label>
-            <select id="giannuzzi_input" name="giannuzzi">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="cascione_input">Cascione Giuseppe</label>
-            <select id="cascione_input" name="cascione">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="hachimi_input">Ben Hassine Hachimi</label>
-            <select id="hachimi_input" name="hachimi">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="fontana_input">Fontana Leonardo</label>
-            <select id="fontana_input" name="fontana">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="belvito_input">Belvito Luca</label>
-            <select id="belvito_input" name="belvito">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="martino_input">Martino Mattia</label>
-            <select id="martino_input" name="martino">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="marasciulo_input">Marasciulo Milo Saverio</label>
-            <select id="marasciulo_input" name="marasciulo">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="renna_input">Renna Nicola</label>
-            <select id="renna_input" name="renna">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="ricciardi_input">Ricciardi Nicola</label>
-            <select id="ricciardi_input" name="ricciardi">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="pirrelli_input">Pirrelli Sergio</label>
-            <select id="pirrelli_input" name="pirrelli">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="brescia_input">Brescia Simone Angelo</label>
-            <select id="brescia_input" name="brescia">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="antonacci_input">Antonacci Stefano</label>
-            <select id="antonacci_input" name="antonacci">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <label for="semeraro_input">Semeraro Alessio</label>
-            <select id="semeraro_input" name="semeraro">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </fieldset>
-        <input type="submit" value="Invia" />
-    </form>
-    <script src="script.js"></script>
+
+  <div class="header">
+    <h1>Benvenuto nel mio sito</h1>
+  </div>
+
+  <div class="container">
+    <button id="postiInClasse" onclick="redirectToPage('postiInClasse.html')">Posti in Classe</button>
+    <button id="AI" onclick="redirectToPage('AI.html')">AI</button>
+  </div>
+
+  <script>
+    function redirectToPage(page) {
+      window.location.href = page;
+    }
+  </script>
+
+  <p class = "footer">By Alessio Semeraro</p>
 </body>
 </html>
