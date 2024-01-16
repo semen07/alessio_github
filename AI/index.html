@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Transfer Learning - TensorFlow.js</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Serra o Spigola?</h1>
+    </div>
+
+    <div class="container">
+        <input type="file" id="imageInput" accept="image/*">
+        <img id="imageDisplay" alt="Loaded Image">
+        <button id="classify">Identifica!</button>
+        <p id="status"></p>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js" type="text/javascript"></script>
+  <script type="module">
+    let model;
+
+    async function loadModel() {
+        model = await tf.loadLayersModel("./model.json");
+        document.getElementById("status").innerText = "Model loaded successfully.";
+        document.getElementById("classify").disabled = false;
+    }
+
+    async function handleImage(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const img = await loadImage(file);
+        document.getElementById("status").innerText = "Image loaded successfully.";
+
+        document.getElementById("imageDisplay").src = img.src;
+      }
+    }
+
+    async function loadImage(file) {
+      const reader = new FileReader();
+      return new Promise((resolve) => {
+        reader.onload = function (e) {
+          const img = new Image();
+          img.onload = function () {
+            resolve(img);
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function preprocessImage(image) {
+      const tensor = tf.browser.fromPixels(image)
+        .resizeNearestNeighbor([224, 224])  // adjust the size according to your model's input shape
+        .toFloat()
+        .div(tf.scalar(255))
+        .expandDims();
+      return tensor;
+    }
+
+    async function classifyImage() {
+        const imageInput = document.getElementById("imageInput");
+        if (imageInput.files.length === 0) {
+            alert("Please select an image first.");
+            return;
+        }
+
+        const image = await loadImage(imageInput.files[0]);
+        const tensor = await preprocessImage(image);
+        const prediction = model.predict(tensor).dataSync()[0];
+    
+        let class_ = 2;
+        let prob;
+
+        if (prediction <= 0.4) {
+            class_ = 1;
+            prob = Math.round(100 - prediction * 100);
+        } else if (prediction >= 0.6) {
+            class_ = 0;
+            prob = Math.round(prediction * 100);
+        }
+
+        console.log(class_);
+        console.log(prob);
+
+        const classNames = ["Spigola", "Serra"];
+        const className = classNames[class_];
+
+        document.getElementById("status").innerText = `Classificato come: ${className} con un'affidabilità di ${prob}%.`;
+    }
+
+
+    document.getElementById("imageInput").addEventListener("change", handleImage);
+    document.getElementById("classify").addEventListener("click", classifyImage);
+    loadModel();
+  </script>
+</body>
+</html>
